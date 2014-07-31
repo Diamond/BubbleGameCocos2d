@@ -44,7 +44,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
         _bubbles = [NSMutableArray array];
         
         self.userInteractionEnabled = TRUE;
-        _physicsNode.debugDraw = TRUE;
+        _physicsNode.debugDraw      = TRUE;
     }
     return self;
 }
@@ -56,6 +56,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
         CGVector direction = radiansToVector(randomInRange(MIN_ANGLE, MAX_ANGLE));
         bubble.physicsBody.velocity = ccp(BUBBLE_SPEED * direction.dx, BUBBLE_SPEED * direction.dy);
         bubble.position = ccp([self screenSize].width / 2, [self screenSize].height / 2);
+        bubble.physicsBody.collisionCategories = @[@"bubble"];
         bubble.physicsBody.collisionType = @"bubble";
         bubble.physicsBody.collisionMask = @[@"edge", @"explosion"];
         [_bubbles addObject:bubble];
@@ -120,26 +121,18 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 {
     CGPoint touchLocation = [touch locationInNode:self];
     Explosion *explosion = (Explosion*)[CCBReader load:@"Explosion"];
-    explosion.scale = 0.2f;
     explosion.position = touchLocation;
-//    explosion.physicsBody = [CCPhysicsBody bodyWithCircleOfRadius:explosion.contentSize.width/2 andCenter:ccp(explosion.contentSize.width/2, explosion.contentSize.height/2)];
-//    explosion.physicsBody.collisionMask = @[@"bubble"];
-//    explosion.physicsBody.collisionType = @"explosion";
-//    explosion.physicsBody.affectedByGravity = FALSE;
-    CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:1.7f scale:10.0f];
-    CCActionDelay    *delay    = [CCActionDelay actionWithDuration:0.7f];
-    CCActionScaleBy  *shrink   = [CCActionScaleBy actionWithDuration:0.7f scale:0.0f];
-    CCActionRemove   *remove   = [CCActionRemove action];
-    CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, remove]];
-    [explosion runAction:sequence];
     [_gameLayer addChild:explosion];
 }
 
--(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair explosion:(Explosion*)nodeA bubble:(Bubble*)nodeB
+-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair explosion:(Explosion*)nodeA bubble:(Bubble*)nodeB
 {
-    CCLOG(@"collision");
-    return FALSE;
+    Explosion *explosion = (Explosion*)[CCBReader load:@"Explosion"];
+    explosion.position = nodeB.position;
+    [_gameLayer addChild:explosion];
+    if ([_gameLayer.children containsObject:nodeB]) {
+        [nodeB removeFromParent];
+    }
 }
-
 
 @end
