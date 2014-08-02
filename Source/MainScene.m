@@ -12,8 +12,10 @@
 
 @implementation MainScene {
     NSMutableArray *_bubbles;
+    NSMutableArray *_bubbleExplosions;
     CCNode         *_gameLayer;
     CCPhysicsNode  *_physicsNode;
+    Explosion      *_explosion;
 }
 
 static const CGFloat  MIN_ANGLE        = 0.0f;
@@ -104,6 +106,11 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     [_gameLayer addChild:bottomEdge];
 }
 
+-(void)setupExplosion
+{
+    _explosion = (Explosion*)[CCBReader load:@"Explosion"];
+}
+
 -(void)didLoadFromCCB
 {
     CCLOG(@"didLoadFromCCB");
@@ -115,24 +122,54 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     _physicsNode.collisionDelegate = self;
     [self setupBubbles];
     [self setupEdges];
+    [self setupExplosion];
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CGPoint touchLocation = [touch locationInNode:self];
-    Explosion *explosion = (Explosion*)[CCBReader load:@"Explosion"];
-    explosion.position = touchLocation;
-    [_gameLayer addChild:explosion];
-}
-
--(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair explosion:(Explosion*)nodeA bubble:(Bubble*)nodeB
-{
-    Explosion *explosion = (Explosion*)[CCBReader load:@"Explosion"];
-    explosion.position = nodeB.position;
-    [_gameLayer addChild:explosion];
-    if ([_gameLayer.children containsObject:nodeB]) {
-        [nodeB removeFromParent];
+    if (![_gameLayer.children containsObject:_explosion]) {
+        CGPoint touchLocation = [touch locationInNode:self];
+        [_explosion startAt:touchLocation];
+        [_gameLayer addChild:_explosion];
     }
 }
+
+-(void)update:(CCTime)delta
+{
+    for (Bubble *bubble in _bubbles) {
+        if ([_gameLayer.children containsObject:bubble]) {
+            if ([bubble checkCollisionWithExplosion:_explosion]) {
+                Explosion *kaboom = (Explosion*)[CCBReader load:@"Explosion"];
+                [_bubbleExplosions addObject:kaboom];
+                [kaboom startAt:bubble.position];
+                [_gameLayer addChild:kaboom];
+                [bubble removeFromParent];
+                CCLOG(@"added explosion");
+            }
+        }
+        if ([_gameLayer.children containsObject:bubble]) {
+            for (Explosion *explosion in _bubbleExplosions) {
+                if ([bubble checkCollisionWithExplosion:explosion]) {
+                    Explosion *kaboom = (Explosion*)[CCBReader load:@"Explosion"];
+                    [_bubbleExplosions addObject:kaboom];
+                    [kaboom startAt:bubble.position];
+                    [_gameLayer addChild:kaboom];
+                    [bubble removeFromParent];
+                    CCLOG(@"added explosion");
+                }
+            }
+        }
+    }
+}
+
+//-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair explosion:(Explosion*)nodeA bubble:(Bubble*)nodeB
+//{
+//    Explosion *explosion = (Explosion*)[CCBReader load:@"Explosion"];
+//    explosion.position = nodeB.position;
+//    [_gameLayer addChild:explosion];
+//    if ([_gameLayer.children containsObject:nodeB]) {
+//        [nodeB removeFromParent];
+//    }
+//}
 
 @end

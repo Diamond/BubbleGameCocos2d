@@ -10,4 +10,6 @@
 
 @interface Explosion : CCSprite
 
+-(void)startAt:(CGPoint)location;
+
 @end

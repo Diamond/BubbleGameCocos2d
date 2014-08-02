@@ -7,7 +7,10 @@
 //
 
 #import "CCNode.h"
+#import "Explosion.h"
 
 @interface Bubble : CCNode
+
+-(BOOL)checkCollisionWithExplosion:(Explosion*)explosion;
 
 @end
