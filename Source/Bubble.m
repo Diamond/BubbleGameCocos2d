@@ -63,12 +63,6 @@
     return magnitudeSquared < (r1 + r2) * (r1 + r2);
 }
 
--(void)removeMe
-{
-    self.dead = TRUE;
-    [self removeFromParentAndCleanup:TRUE];
-}
-
 -(void)explode
 {
     if (self.exploding) {
@@ -80,7 +74,10 @@
     CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:1.7f scale:9.0f];
     CCActionDelay    *delay    = [CCActionDelay actionWithDuration:0.7f];
     CCActionScaleBy  *shrink   = [CCActionScaleBy actionWithDuration:0.7f scale:0.0f];
-    CCActionCallFunc *betterRemove = [CCActionCallFunc actionWithTarget:self selector:@selector(removeMe)];
+    CCActionCallBlock *betterRemove = [CCActionCallBlock actionWithBlock:^{
+        self.dead = TRUE;
+        [self removeFromParentAndCleanup:TRUE];
+    }];
     CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, betterRemove]];
     [self runAction:sequence];
 }

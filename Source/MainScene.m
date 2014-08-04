@@ -14,7 +14,6 @@
     NSMutableArray *_bubbles;
     NSMutableArray *_bubbleExplosions;
     CCNode         *_gameLayer;
-    CCPhysicsNode  *_physicsNode;
     Explosion      *_explosion;
 }
 
@@ -79,7 +78,6 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(void)onEnter
 {
     [super onEnter];
-    _physicsNode.collisionDelegate = self;
     [self setupBubbles];
     [self setupExplosion];
 }
