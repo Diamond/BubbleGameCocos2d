@@ -9,8 +9,13 @@
 #import "CCNode.h"
 #import "Explosion.h"
 
-@interface Bubble : CCNode
+@interface Bubble : CCSprite
+
+@property (nonatomic) BOOL exploding;
+@property (nonatomic) BOOL dead;
 
 -(BOOL)checkCollisionWithExplosion:(Explosion*)explosion;
+-(BOOL)checkCollisionWithBubble:(Bubble *)bubble;
+-(void)explode;
 
 @end

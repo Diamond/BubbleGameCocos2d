@@ -21,7 +21,7 @@
 static const CGFloat  MIN_ANGLE        = 0.0f;
 static const CGFloat  MAX_ANGLE        = 360.0f * M_PI / 180.0f;
 static const CGFloat  BUBBLE_SPEED     = 50.0f;
-static const int      STARTING_BUBBLES = 10;
+static const int      STARTING_BUBBLES = 30;
 
 static inline CGVector radiansToVector(CGFloat radians)
 {
@@ -44,7 +44,6 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(id)init {
     if (self = [super init]) {
         _bubbles = [NSMutableArray array];
-        
         self.userInteractionEnabled = TRUE;
         _physicsNode.debugDraw      = TRUE;
     }
@@ -54,12 +53,14 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(void)setupBubbles
 {
     for (int i = 0; i < STARTING_BUBBLES; i++) {
-        Bubble *bubble = (Bubble*)[CCBReader load:@"Bubble"];
+        Bubble *bubble = (Bubble*)[CCBReader load:@"BetterBubble"];
+        bubble.scale = 0.25f;
         CGVector direction = radiansToVector(randomInRange(MIN_ANGLE, MAX_ANGLE));
         bubble.physicsBody.velocity = ccp(BUBBLE_SPEED * direction.dx, BUBBLE_SPEED * direction.dy);
         bubble.physicsBody.collisionCategories = @[@"bubble"];
         bubble.physicsBody.collisionType = @"bubble";
         bubble.physicsBody.collisionMask = @[@"edge", @"explosion"];
+        bubble.name = [NSString stringWithFormat:@"bubble_%d", i];
         [_bubbles addObject:bubble];
         [self restoreBubble:bubble];
     }
@@ -144,32 +145,21 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 
 -(void)update:(CCTime)delta
 {
-    NSMutableArray *newExplosions = [NSMutableArray array];
     for (Bubble *bubble in _bubbles) {
         if ([_gameLayer.children containsObject:bubble]) {
             if ([bubble checkCollisionWithExplosion:_explosion]) {
-                Explosion *kaboom = (Explosion*)[CCBReader load:@"Explosion"];
-                [_bubbleExplosions addObject:kaboom];
-                [kaboom startAt:bubble.position];
-                [_gameLayer addChild:kaboom];
-                [bubble removeFromParent];
+                [bubble explode];
             }
-            for (Explosion *explosion in _bubbleExplosions) {
-                if ([bubble checkCollisionWithExplosion:explosion]) {
-                    CCLOG(@"double collision");
-                    Explosion *kaboom = (Explosion*)[CCBReader load:@"Explosion"];
-                    [newExplosions addObject:kaboom];
-                    [kaboom startAt:bubble.position];
-                    [_gameLayer addChild:kaboom];
-                    [bubble removeFromParent];
+            for (Bubble *otherBubble in _bubbles) {
+                if (otherBubble.name == bubble.name) {
+                    continue;
+                }
+                if ([bubble checkCollisionWithBubble:otherBubble]) {
+                    [bubble explode];
                 }
             }
         }
     }
-    for (Explosion *explosion in newExplosions) {
-        [_bubbleExplosions addObject:explosion];
-    }
-    [newExplosions removeAllObjects];
 }
 
 //-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair explosion:(Explosion*)nodeA bubble:(Bubble*)nodeB
