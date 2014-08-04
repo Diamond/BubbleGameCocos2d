@@ -26,7 +26,7 @@
     CCActionScaleBy  *shrink   = [CCActionScaleBy actionWithDuration:0.7f scale:0.0f];
     CCActionCallBlock *remove  = [CCActionCallBlock actionWithBlock:^{
         self.active = FALSE;
-        [self removeFromParent];
+        [self removeFromParentAndCleanup:TRUE];
     }];
     CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, remove]];
     [self runAction:sequence];

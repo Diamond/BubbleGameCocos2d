@@ -39,7 +39,6 @@
     self.colorRGBA = [CCColor colorWithRed:red green:green blue:blue alpha:0.9f];
 }
 
-
 -(BOOL)checkCollisionWithBubble:(Bubble *)bubble
 {
     if (self.dead || bubble.dead) {

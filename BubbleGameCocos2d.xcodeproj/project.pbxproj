@@ -36,6 +36,7 @@
 		B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
+		CA3B7AA4198F3F450011ABB0 /* TitleScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3B7AA3198F3F450011ABB0 /* TitleScreen.m */; };
 		CABB388C19889F6000B83F5C /* Bubble.m in Sources */ = {isa = PBXBuildFile; fileRef = CABB388B19889F6000B83F5C /* Bubble.m */; };
 		CAE032951989EF2600DEC8E4 /* Explosion.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE032941989EF2600DEC8E4 /* Explosion.m */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,8 @@
 		B77F1B3F17B978D7009739AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B77F1B4117B978D7009739AE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveChipmunk.a; path = "../libs/cocos2d-iphone/external/Chipmunk/xcode/build/Debug-iphoneos/libObjectiveChipmunk.a"; sourceTree = "<group>"; };
+		CA3B7AA2198F3F450011ABB0 /* TitleScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScreen.h; path = Source/TitleScreen.h; sourceTree = "<group>"; };
+		CA3B7AA3198F3F450011ABB0 /* TitleScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleScreen.m; path = Source/TitleScreen.m; sourceTree = "<group>"; };
 		CABB388A19889F6000B83F5C /* Bubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bubble.h; path = Source/Bubble.h; sourceTree = "<group>"; };
 		CABB388B19889F6000B83F5C /* Bubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bubble.m; path = Source/Bubble.m; sourceTree = "<group>"; };
 		CAE032931989EF2600DEC8E4 /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Explosion.h; path = Source/Explosion.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				CABB388B19889F6000B83F5C /* Bubble.m */,
 				B737893D1807617C0076A88C /* AppDelegate.h */,
 				B737893E1807617C0076A88C /* AppDelegate.m */,
+				CA3B7AA2198F3F450011ABB0 /* TitleScreen.h */,
+				CA3B7AA3198F3F450011ABB0 /* TitleScreen.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
 				CAE032931989EF2600DEC8E4 /* Explosion.h */,
@@ -350,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA3B7AA4198F3F450011ABB0 /* TitleScreen.m in Sources */,
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				CAE032951989EF2600DEC8E4 /* Explosion.m in Sources */,

@@ -15,6 +15,9 @@
     NSMutableArray *_bubbleExplosions;
     CCNode         *_gameLayer;
     Explosion      *_explosion;
+    BOOL           _ranOnce;
+    int            _score;
+    CCLabelTTF     *_scoreDisplay;
 }
 
 static const CGFloat  MIN_ANGLE        = 0.0f;
@@ -44,6 +47,8 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     if (self = [super init]) {
         _bubbles = [NSMutableArray array];
         self.userInteractionEnabled = TRUE;
+        _ranOnce = FALSE;
+        _score   = 0;
     }
     return self;
 }
@@ -84,10 +89,14 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    if (_ranOnce) {
+        return;
+    }
     if (![_gameLayer.children containsObject:_explosion]) {
         CGPoint touchLocation = [touch locationInNode:self];
         [_explosion startAt:touchLocation];
         [_gameLayer addChild:_explosion];
+        _ranOnce = TRUE;
     }
 }
 
@@ -97,6 +106,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
         if ([_gameLayer.children containsObject:bubble]) {
             if ([bubble checkCollisionWithExplosion:_explosion]) {
                 [bubble explode];
+                [self addPoint];
             }
             for (Bubble *otherBubble in _bubbles) {
                 if (otherBubble.name == bubble.name) {
@@ -104,10 +114,17 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
                 }
                 if ([bubble checkCollisionWithBubble:otherBubble]) {
                     [bubble explode];
+                    [self addPoint];
                 }
             }
         }
     }
+}
+
+-(void)addPoint
+{
+    _score++;
+    _scoreDisplay.string = [NSString stringWithFormat:@"Score: %d / %d", _score, STARTING_BUBBLES];
 }
 
 @end
