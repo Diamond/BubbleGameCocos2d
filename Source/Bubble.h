@@ -11,11 +11,13 @@
 
 @interface Bubble : CCSprite
 
-@property (nonatomic) BOOL exploding;
-@property (nonatomic) BOOL dead;
+@property (nonatomic) BOOL    exploding;
+@property (nonatomic) BOOL    dead;
+@property (nonatomic) CGPoint velocity;
 
 -(BOOL)checkCollisionWithExplosion:(Explosion*)explosion;
 -(BOOL)checkCollisionWithBubble:(Bubble *)bubble;
 -(void)explode;
+-(CGFloat) radius;
 
 @end

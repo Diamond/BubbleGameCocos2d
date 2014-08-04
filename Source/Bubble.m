@@ -10,16 +10,6 @@
 
 @implementation Bubble
 
--(id)init
-{
-    if (self = [super init]) {
-        self.exploding = FALSE;
-        self.dead      = FALSE;
-        [self setRandomColor];
-    }
-    return self;
-}
-
 -(void)didLoadFromCCB
 {
     self.exploding = FALSE;
@@ -30,7 +20,7 @@
 
 -(BOOL)checkCollisionWithExplosion:(Explosion *)explosion
 {
-    if (self.dead) {
+    if (self.dead || !explosion.active) {
         return FALSE;
     }
     CGFloat explodeRadius = explosion.contentSize.width * 0.5f * explosion.scale;
@@ -58,7 +48,7 @@
     if (bubble.exploding) {
         CGFloat bubbleRadius = bubble.contentSize.width * 0.5f * bubble.scale;
         CGFloat selfRadius   = self.contentSize.width * 0.5f * self.scale;
-        if ([self circlesIntersectAt:self.position withRadius:selfRadius withPoint:bubble.position withRadius:bubbleRadius andDebug:TRUE]) {
+        if ([self circlesIntersectAt:self.position withRadius:selfRadius withPoint:bubble.position withRadius:bubbleRadius]) {
             return TRUE;
         }
     }
@@ -66,11 +56,6 @@
 }
 
 -(BOOL)circlesIntersectAt:(CGPoint)p1 withRadius:(CGFloat)r1 withPoint:(CGPoint)p2 withRadius:(CGFloat)r2
-{
-    return [self circlesIntersectAt:p1 withRadius:r1 withPoint:p2 withRadius:r2 andDebug:FALSE];
-}
-
--(BOOL)circlesIntersectAt:(CGPoint)p1 withRadius:(CGFloat)r1 withPoint:(CGPoint)p2 withRadius:(CGFloat)r2 andDebug:(BOOL)debug
 {
     CGFloat dx = p2.x - p1.x;
     CGFloat dy = p2.y - p1.y;
@@ -89,7 +74,7 @@
     if (self.exploding) {
         return;
     }
-    self.physicsBody.velocity  = CGPointZero;
+    self.velocity              = CGPointZero;
     self.exploding             = TRUE;
     self.anchorPoint           = ccp(0.5, 0.5);
     CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:1.7f scale:9.0f];
@@ -98,6 +83,32 @@
     CCActionCallFunc *betterRemove = [CCActionCallFunc actionWithTarget:self selector:@selector(removeMe)];
     CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, betterRemove]];
     [self runAction:sequence];
+}
+
+-(void)update:(CCTime)delta
+{
+    CGPoint newPos = self.position;
+    if (self.position.x <= [self radius]) {
+        self.velocity = ccp(self.velocity.x * -1, self.velocity.y);
+    } else if (self.position.x >= [self screenSize].width - [self radius]) {
+        self.velocity = ccp(self.velocity.x * -1, self.velocity.y);
+    } else if (self.position.y <= [self radius]) {
+        self.velocity = ccp(self.velocity.x, self.velocity.y * -1);
+    } else if (self.position.y >= [self screenSize].height - [self radius]) {
+        self.velocity = ccp(self.velocity.x, self.velocity.y * -1);
+    }
+    newPos.x += (delta * self.velocity.x);
+    newPos.y += (delta * self.velocity.y);
+    self.position = newPos;
+}
+
+-(CGFloat)radius
+{
+    return self.contentSize.width * 0.5 * self.scale;
+}
+
+-(CGSize)screenSize {
+    return [[UIScreen mainScreen] bounds].size;
 }
 
 @end

@@ -20,7 +20,7 @@
 
 static const CGFloat  MIN_ANGLE        = 0.0f;
 static const CGFloat  MAX_ANGLE        = 360.0f * M_PI / 180.0f;
-static const CGFloat  BUBBLE_SPEED     = 50.0f;
+static const CGFloat  BUBBLE_SPEED     = 30.0f;
 static const int      STARTING_BUBBLES = 30;
 
 static inline CGVector radiansToVector(CGFloat radians)
@@ -45,7 +45,6 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     if (self = [super init]) {
         _bubbles = [NSMutableArray array];
         self.userInteractionEnabled = TRUE;
-        _physicsNode.debugDraw      = TRUE;
     }
     return self;
 }
@@ -56,10 +55,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
         Bubble *bubble = (Bubble*)[CCBReader load:@"BetterBubble"];
         bubble.scale = 0.25f;
         CGVector direction = radiansToVector(randomInRange(MIN_ANGLE, MAX_ANGLE));
-        bubble.physicsBody.velocity = ccp(BUBBLE_SPEED * direction.dx, BUBBLE_SPEED * direction.dy);
-        bubble.physicsBody.collisionCategories = @[@"bubble"];
-        bubble.physicsBody.collisionType = @"bubble";
-        bubble.physicsBody.collisionMask = @[@"edge", @"explosion"];
+        bubble.velocity = ccp(BUBBLE_SPEED * direction.dx, BUBBLE_SPEED * direction.dy);
         bubble.name = [NSString stringWithFormat:@"bubble_%d", i];
         [_bubbles addObject:bubble];
         [self restoreBubble:bubble];
@@ -75,54 +71,9 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     [_gameLayer addChild:bubble];
 }
 
--(void)setupEdges
-{
-    CCNode *leftEdge = [[CCNode alloc] init];
-    leftEdge.contentSize = CGSizeMake(0.1f, _gameLayer.contentSize.height);
-    leftEdge.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0, 0, 0.1, [self screenSize].height) cornerRadius:0.0];
-    leftEdge.position = CGPointZero;
-    leftEdge.physicsBody.type = CCPhysicsBodyTypeStatic;
-    leftEdge.physicsBody.elasticity = 1.0f;
-    leftEdge.physicsBody.collisionType = @"edge";
-    [_gameLayer addChild:leftEdge];
-    
-    CCNode *rightEdge = [[CCNode alloc] init];
-    rightEdge.contentSize = CGSizeMake(0.1f, _gameLayer.contentSize.height);
-    rightEdge.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0, 0, 0.1, [self screenSize].height) cornerRadius:0.0];
-    rightEdge.position = ccp([self screenSize].width, 0);
-    rightEdge.physicsBody.type = CCPhysicsBodyTypeStatic;
-    rightEdge.physicsBody.elasticity = 1.0f;
-    rightEdge.physicsBody.collisionType = @"edge";
-    [_gameLayer addChild:rightEdge];
-
-    CCNode *topEdge = [[CCNode alloc] init];
-    topEdge.contentSize = CGSizeMake(_gameLayer.contentSize.width, 0.1f);
-    topEdge.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0, 0, [self screenSize].width, 0.1) cornerRadius:0.0];
-    topEdge.position = ccp(0, [self screenSize].height);
-    topEdge.physicsBody.type = CCPhysicsBodyTypeStatic;
-    topEdge.physicsBody.elasticity = 1.0f;
-    topEdge.physicsBody.collisionType = @"edge";
-    [_gameLayer addChild:topEdge];
-    
-    CCNode *bottomEdge = [[CCNode alloc] init];
-    bottomEdge.contentSize = CGSizeMake(_gameLayer.contentSize.width, 0.1f);
-    bottomEdge.physicsBody = [CCPhysicsBody bodyWithRect:CGRectMake(0, 0, [self screenSize].width, 0.1) cornerRadius:0.0];
-    bottomEdge.position = ccp(0, 0);
-    bottomEdge.physicsBody.type = CCPhysicsBodyTypeStatic;
-    bottomEdge.physicsBody.elasticity = 1.0f;
-    bottomEdge.physicsBody.collisionType = @"edge";
-    bottomEdge.physicsBody.collisionMask = @[@"bubble"];
-    [_gameLayer addChild:bottomEdge];
-}
-
 -(void)setupExplosion
 {
     _explosion = (Explosion*)[CCBReader load:@"Explosion"];
-}
-
--(void)didLoadFromCCB
-{
-    CCLOG(@"didLoadFromCCB");
 }
 
 -(void)onEnter
@@ -130,7 +81,6 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     [super onEnter];
     _physicsNode.collisionDelegate = self;
     [self setupBubbles];
-    [self setupEdges];
     [self setupExplosion];
 }
 
@@ -161,15 +111,5 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
         }
     }
 }
-
-//-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair explosion:(Explosion*)nodeA bubble:(Bubble*)nodeB
-//{
-//    Explosion *explosion = (Explosion*)[CCBReader load:@"Explosion"];
-//    explosion.position = nodeB.position;
-//    [_gameLayer addChild:explosion];
-//    if ([_gameLayer.children containsObject:nodeB]) {
-//        [nodeB removeFromParent];
-//    }
-//}
 
 @end

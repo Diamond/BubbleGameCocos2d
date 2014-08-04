@@ -10,15 +10,24 @@
 
 @implementation Explosion
 
+-(void)didLoadFromCCB
+{
+    self.active = FALSE;
+}
+
 -(void)startAt:(CGPoint)location
 {
+    self.active = TRUE;
     self.position              = location;
     self.anchorPoint           = ccp(0.5, 0.5);
     self.scale                 = 0.2f;
     CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:1.7f scale:10.0f];
     CCActionDelay    *delay    = [CCActionDelay actionWithDuration:0.7f];
     CCActionScaleBy  *shrink   = [CCActionScaleBy actionWithDuration:0.7f scale:0.0f];
-    CCActionRemove   *remove   = [CCActionRemove action];
+    CCActionCallBlock *remove  = [CCActionCallBlock actionWithBlock:^{
+        self.active = FALSE;
+        [self removeFromParent];
+    }];
     CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, remove]];
     [self runAction:sequence];
 }

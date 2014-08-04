@@ -10,6 +10,8 @@
 
 @interface Explosion : CCSprite
 
+@property (nonatomic) BOOL active;
+
 -(void)startAt:(CGPoint)location;
 
 @end
