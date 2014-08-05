@@ -50,10 +50,10 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     if (self = [super init]) {
         _bubbles = [NSMutableArray array];
         self.userInteractionEnabled = TRUE;
-        _ranOnce    = FALSE;
-        _score      = 0;
-        _level      = 0;
-        _totalScore = 0;
+        _ranOnce     = FALSE;
+        _score       = 0;
+        _level       = 0;
+        _totalScore  = 0;
     }
     return self;
 }
