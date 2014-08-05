@@ -24,7 +24,8 @@
         return FALSE;
     }
     CGFloat explodeRadius = explosion.contentSize.width * 0.5f * explosion.scale;
-    if ([self circlesIntersectAt:self.position withRadius:self.contentSize.width*0.5f withPoint:explosion.position withRadius:explodeRadius]) {
+    CGFloat selfRadius   = self.contentSize.width * 0.5f * self.scale;
+    if ([self circlesIntersectAt:self.position withRadius:selfRadius withPoint:explosion.position withRadius:explodeRadius]) {
         return TRUE;
     }
     return FALSE;
@@ -38,7 +39,6 @@
     
     self.colorRGBA = [CCColor colorWithRed:red green:green blue:blue alpha:0.9f];
 }
-
 
 -(BOOL)checkCollisionWithBubble:(Bubble *)bubble
 {
@@ -77,6 +77,7 @@
     CCActionCallBlock *betterRemove = [CCActionCallBlock actionWithBlock:^{
         self.dead = TRUE;
         [self removeFromParentAndCleanup:TRUE];
+        self.exploding = FALSE;
     }];
     CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, betterRemove]];
     [self runAction:sequence];
