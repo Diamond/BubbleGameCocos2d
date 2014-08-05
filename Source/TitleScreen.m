@@ -7,6 +7,7 @@
 //
 
 #import "TitleScreen.h"
+#import "MainScene.h"
 
 @implementation TitleScreen
 
@@ -18,7 +19,7 @@
 
 -(void)playEndless
 {
-    CCScene *gameplayScene = [CCBReader loadAsScene:@"MainScene"];
+    CCScene *gameplayScene = (MainScene*)[CCBReader loadAsScene:@"EndlessScene"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }
 
