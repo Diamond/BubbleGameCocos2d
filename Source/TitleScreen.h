@@ -10,6 +10,8 @@
 
 @interface TitleScreen : CCNode
 
--(void)play;
+-(void)playNormal;
+-(void)playEndless;
+-(void)viewHighScores;
 
 @end

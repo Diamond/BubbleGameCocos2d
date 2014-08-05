@@ -105,16 +105,20 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     for (Bubble *bubble in _bubbles) {
         if ([_gameLayer.children containsObject:bubble]) {
             if ([bubble checkCollisionWithExplosion:_explosion]) {
+                if (!bubble.exploding) {
+                    [self addPoint];
+                }
                 [bubble explode];
-                [self addPoint];
             }
             for (Bubble *otherBubble in _bubbles) {
                 if (otherBubble.name == bubble.name) {
                     continue;
                 }
                 if ([bubble checkCollisionWithBubble:otherBubble]) {
+                    if (!bubble.exploding) {
+                        [self addPoint];
+                    }
                     [bubble explode];
-                    [self addPoint];
                 }
             }
         }
