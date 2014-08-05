@@ -402,7 +402,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Score: 0 / 0</string>
+							<string>Level 1 Score: 0 / 3</string>
 							<false/>
 						</array>
 					</dict>
@@ -538,8 +538,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
