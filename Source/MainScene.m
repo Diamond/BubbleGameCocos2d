@@ -22,6 +22,7 @@
     int            _bubbleMax;
     int            _loadBubbles;
     int            _totalScore;
+    CCSprite       *_victoryDisplay;
 }
 
 static const CGFloat  MIN_ANGLE        = 0.0f;
@@ -70,24 +71,25 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 
 -(void)loadStage
 {
+    _victoryDisplay.visible = FALSE;
     switch (_level) {
         case 19:
-            [self buildStage:40 andNextLevelAt:38];
+            [self buildStage:40 andNextLevelAt:40];
             break;
         case 18:
-            [self buildStage:40 andNextLevelAt:37];
+            [self buildStage:15 andNextLevelAt:12];
             break;
         case 17:
-            [self buildStage:40 andNextLevelAt:35];
+            [self buildStage:18 andNextLevelAt:16];
             break;
         case 16:
-            [self buildStage:35 andNextLevelAt:32];
+            [self buildStage:20 andNextLevelAt:18];
             break;
         case 15:
-            [self buildStage:35 andNextLevelAt:31];
+            [self buildStage:25 andNextLevelAt:23];
             break;
         case 14:
-            [self buildStage:35 andNextLevelAt:30];
+            [self buildStage:30 andNextLevelAt:28];
             break;
         case 13:
             [self buildStage:35 andNextLevelAt:28];
@@ -99,31 +101,31 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
             [self buildStage:30 andNextLevelAt:24];
             break;
         case 10:
-            [self buildStage:25 andNextLevelAt:22];
+            [self buildStage:30 andNextLevelAt:22];
             break;
         case 9:
-            [self buildStage:25 andNextLevelAt:19];
+            [self buildStage:30 andNextLevelAt:19];
             break;
         case 8:
-            [self buildStage:25 andNextLevelAt:17];
+            [self buildStage:30 andNextLevelAt:17];
             break;
         case 7:
-            [self buildStage:20 andNextLevelAt:15];
+            [self buildStage:25 andNextLevelAt:15];
             break;
         case 6:
             [self buildStage:20 andNextLevelAt:13];
             break;
         case 5:
-            [self buildStage:15 andNextLevelAt:10];
+            [self buildStage:20 andNextLevelAt:10];
             break;
         case 4:
-            [self buildStage:12 andNextLevelAt:7];
+            [self buildStage:15 andNextLevelAt:7];
             break;
         case 3:
-            [self buildStage:10 andNextLevelAt:5];
+            [self buildStage:15 andNextLevelAt:5];
             break;
         case 2:
-            [self buildStage:7 andNextLevelAt:3];
+            [self buildStage:15 andNextLevelAt:3];
             break;
         case 1:
             [self buildStage:5 andNextLevelAt:2];
@@ -147,7 +149,10 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(void)setupBubbles
 {
     for (int i = 0; i < _loadBubbles; i++) {
+        CGFloat bubbleSpeed = BUBBLE_SPEED;
+        bubbleSpeed -= (_level % 20) * 2;
         Bubble *bubble = (Bubble*)[CCBReader load:@"BetterBubble"];
+        bubble.difficulty = (_level % 20);
         bubble.scale = 0.1f;
         CGVector direction = radiansToVector(randomInRange(MIN_ANGLE, MAX_ANGLE));
         bubble.velocity = ccp(BUBBLE_SPEED * direction.dx, BUBBLE_SPEED * direction.dy);
@@ -246,6 +251,9 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(void)updateDisplay
 {
     _scoreDisplay.string = [NSString stringWithFormat:@"Level %d Score: %d / %d", _level+1, _score, _bubbleMax];
+    if (_score >= _bubbleMax) {
+        _victoryDisplay.visible = TRUE;
+    }
 }
 
 -(void)transitionToNextStage
@@ -253,7 +261,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     _level++;
     _totalScore += _score;
     [self saveProgress];
-    [self loadStage];
+    [self gotoTransition];
 }
 
 -(void)redoStage
@@ -264,6 +272,12 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(void)returnToTitle
 {
     CCScene *gameplayScene = [CCBReader loadAsScene:@"TitleScreen"];
+    [[CCDirector sharedDirector] replaceScene:gameplayScene];
+}
+
+-(void)gotoTransition
+{
+    CCScene *gameplayScene = [CCBReader loadAsScene:@"TransitionScene"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }
 

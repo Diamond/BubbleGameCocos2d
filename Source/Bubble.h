@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL    exploding;
 @property (nonatomic) BOOL    dead;
 @property (nonatomic) CGPoint velocity;
+@property (nonatomic) int     difficulty;
 
 -(BOOL)checkCollisionWithExplosion:(Explosion*)explosion;
 -(BOOL)checkCollisionWithBubble:(Bubble *)bubble;

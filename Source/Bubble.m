@@ -10,6 +10,14 @@
 
 @implementation Bubble
 
+-(id)init
+{
+    if (self = [super init]) {
+        self.difficulty = 0;
+    }
+    return self;
+}
+
 -(void)didLoadFromCCB
 {
     self.exploding = FALSE;
@@ -68,6 +76,10 @@
     if (self.exploding) {
         return;
     }
+    // access audio object
+    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    // play sound effect
+    [audio playEffect:@"pop.mp3"];
     self.velocity              = CGPointZero;
     self.exploding             = TRUE;
     self.anchorPoint           = ccp(0.5, 0.5);
@@ -81,6 +93,23 @@
     }];
     CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, betterRemove]];
     [self runAction:sequence];
+}
+
+-(void)runSequences
+{
+    CGFloat expandDuration = 1.8f;
+    CGFloat expandScale    = 11.0f;
+    CGFloat delayDuration  = 0.9f;
+    
+    if (self.difficulty == 1) {
+        expandDuration = 1.7f;
+        expandScale = 10.0f;
+        delayDuration = 0.8f;
+    } else if (self.difficulty == 2) {
+        expandDuration = 1.5f;
+        expandScale = 9.0f;
+        delayDuration = 0.7f;
+    }
 }
 
 -(void)update:(CCTime)delta

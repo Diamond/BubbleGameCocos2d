@@ -46,6 +46,9 @@
 		CA96AB56199099B500EDC232 /* icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB53199099B500EDC232 /* icon-57@2x.png */; };
 		CA96AB57199099B500EDC232 /* icon-114@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB54199099B500EDC232 /* icon-114@2x.png */; };
 		CA96AB58199099B500EDC232 /* icon-120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB55199099B500EDC232 /* icon-120@2x.png */; };
+		CA96AB5D1991C8D600EDC232 /* Sky Game Menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB5C1991C8D600EDC232 /* Sky Game Menu.mp3 */; };
+		CA96AB5F1991D38B00EDC232 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB5E1991D38B00EDC232 /* pop.mp3 */; };
+		CA96AB621991D8BC00EDC232 /* TransitionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96AB611991D8BC00EDC232 /* TransitionScene.m */; };
 		CABB388C19889F6000B83F5C /* Bubble.m in Sources */ = {isa = PBXBuildFile; fileRef = CABB388B19889F6000B83F5C /* Bubble.m */; };
 		CAE032951989EF2600DEC8E4 /* Explosion.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE032941989EF2600DEC8E4 /* Explosion.m */; };
 /* End PBXBuildFile section */
@@ -114,6 +117,10 @@
 		CA96AB53199099B500EDC232 /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57@2x.png"; sourceTree = "<group>"; };
 		CA96AB54199099B500EDC232 /* icon-114@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-114@2x.png"; sourceTree = "<group>"; };
 		CA96AB55199099B500EDC232 /* icon-120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120@2x.png"; sourceTree = "<group>"; };
+		CA96AB5C1991C8D600EDC232 /* Sky Game Menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sky Game Menu.mp3"; sourceTree = "<group>"; };
+		CA96AB5E1991D38B00EDC232 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
+		CA96AB601991D8BC00EDC232 /* TransitionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitionScene.h; path = Source/TransitionScene.h; sourceTree = "<group>"; };
+		CA96AB611991D8BC00EDC232 /* TransitionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitionScene.m; path = Source/TransitionScene.m; sourceTree = "<group>"; };
 		CABB388A19889F6000B83F5C /* Bubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bubble.h; path = Source/Bubble.h; sourceTree = "<group>"; };
 		CABB388B19889F6000B83F5C /* Bubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bubble.m; path = Source/Bubble.m; sourceTree = "<group>"; };
 		CAE032931989EF2600DEC8E4 /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Explosion.h; path = Source/Explosion.h; sourceTree = "<group>"; };
@@ -155,6 +162,8 @@
 			children = (
 				CABB388A19889F6000B83F5C /* Bubble.h */,
 				CABB388B19889F6000B83F5C /* Bubble.m */,
+				CA96AB601991D8BC00EDC232 /* TransitionScene.h */,
+				CA96AB611991D8BC00EDC232 /* TransitionScene.m */,
 				B737893D1807617C0076A88C /* AppDelegate.h */,
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				CA3B7AA2198F3F450011ABB0 /* TitleScreen.h */,
@@ -246,6 +255,8 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA96AB5E1991D38B00EDC232 /* pop.mp3 */,
+				CA96AB5C1991C8D600EDC232 /* Sky Game Menu.mp3 */,
 				CA96AB49199094EF00EDC232 /* Images.xcassets */,
 				B73789911807667A0076A88C /* Icons */,
 				B737893A180761570076A88C /* Published-iOS */,
@@ -361,8 +372,10 @@
 				CA96AB4F1990956700EDC232 /* icon-114.png in Resources */,
 				CA96AB4E1990956700EDC232 /* icon-57.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
+				CA96AB5F1991D38B00EDC232 /* pop.mp3 in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
+				CA96AB5D1991C8D600EDC232 /* Sky Game Menu.mp3 in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,
 			);
@@ -397,6 +410,7 @@
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				CAE032951989EF2600DEC8E4 /* Explosion.m in Sources */,
+				CA96AB621991D8BC00EDC232 /* TransitionScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				CABB388C19889F6000B83F5C /* Bubble.m in Sources */,
 			);
@@ -442,7 +456,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Bubble Burst";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -472,7 +486,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "Bubble Burst";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -507,7 +521,7 @@
 				);
 				PRODUCT_NAME = "Bubble Burst";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -541,7 +555,7 @@
 				);
 				PRODUCT_NAME = "Bubble Burst";
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

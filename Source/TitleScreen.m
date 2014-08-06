@@ -10,7 +10,21 @@
 #import "MainScene.h"
 #import "EndlessScene.h"
 
-@implementation TitleScreen
+@implementation TitleScreen {
+    CCLabelTTF *_topScoreDisplay;
+}
+
+-(void)onEnter
+{
+    [super onEnter];
+    [[OALSimpleAudio sharedInstance] playBg:@"Sky Game Menu.mp3" loop:YES];
+    OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    // play background sound
+    [audio preloadEffect:@"pop.mp3"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int currentTopScore = [defaults integerForKey:@"topScore"];
+    _topScoreDisplay.string = [NSString stringWithFormat:@"Current Top Score: %d", currentTopScore];
+}
 
 -(void)playNormal
 {
