@@ -83,16 +83,7 @@
     self.velocity              = CGPointZero;
     self.exploding             = TRUE;
     self.anchorPoint           = ccp(0.5, 0.5);
-    CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:1.8f scale:11.0f];
-    CCActionDelay    *delay    = [CCActionDelay actionWithDuration:0.9f];
-    CCActionScaleBy  *shrink   = [CCActionScaleBy actionWithDuration:0.7f scale:0.0f];
-    CCActionCallBlock *betterRemove = [CCActionCallBlock actionWithBlock:^{
-        self.dead = TRUE;
-        [self removeFromParentAndCleanup:TRUE];
-        self.exploding = FALSE;
-    }];
-    CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, betterRemove]];
-    [self runAction:sequence];
+    [self runSequences];
 }
 
 -(void)runSequences
@@ -103,13 +94,28 @@
     
     if (self.difficulty == 1) {
         expandDuration = 1.7f;
-        expandScale = 10.0f;
+        expandScale = 9.0f;
         delayDuration = 0.8f;
     } else if (self.difficulty == 2) {
         expandDuration = 1.5f;
-        expandScale = 9.0f;
-        delayDuration = 0.7f;
+        expandScale = 7.0f;
+        delayDuration = 0.6f;
+    } else if (self.difficulty >= 3) {
+        expandDuration = 1.3f;
+        expandScale = 6.0f;
+        delayDuration = 0.5f;
     }
+    
+    CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:expandDuration scale:expandScale];
+    CCActionDelay    *delay    = [CCActionDelay actionWithDuration:delayDuration];
+    CCActionScaleBy  *shrink   = [CCActionScaleBy actionWithDuration:0.7f scale:0.0f];
+    CCActionCallBlock *betterRemove = [CCActionCallBlock actionWithBlock:^{
+        self.dead = TRUE;
+        [self removeFromParentAndCleanup:TRUE];
+        self.exploding = FALSE;
+    }];
+    CCActionSequence *sequence = [CCActionSequence actionWithArray:@[expand, delay, shrink, betterRemove]];
+    [self runAction:sequence];
 }
 
 -(void)update:(CCTime)delta

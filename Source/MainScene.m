@@ -72,7 +72,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(void)loadStage
 {
     _victoryDisplay.visible = FALSE;
-    switch (_level) {
+    switch (_level % 20) {
         case 19:
             [self buildStage:40 andNextLevelAt:40];
             break;
@@ -150,12 +150,12 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 {
     for (int i = 0; i < _loadBubbles; i++) {
         CGFloat bubbleSpeed = BUBBLE_SPEED;
-        bubbleSpeed -= (_level % 20) * 2;
+        bubbleSpeed -= (_level / 20) * 3;
         Bubble *bubble = (Bubble*)[CCBReader load:@"BetterBubble"];
-        bubble.difficulty = (_level % 20);
+        bubble.difficulty = (_level / 20);
         bubble.scale = 0.1f;
         CGVector direction = radiansToVector(randomInRange(MIN_ANGLE, MAX_ANGLE));
-        bubble.velocity = ccp(BUBBLE_SPEED * direction.dx, BUBBLE_SPEED * direction.dy);
+        bubble.velocity = ccp(bubbleSpeed * direction.dx, bubbleSpeed * direction.dy);
         bubble.name = [NSString stringWithFormat:@"bubble_%d", i];
         [_bubbles addObject:bubble];
         [self restoreBubble:bubble];
@@ -260,6 +260,10 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 {
     _level++;
     _totalScore += _score;
+    if (_score == _loadBubbles) {
+        // Bonus points for getting all of the bubbles in the stage
+        _totalScore += 10;
+    }
     [self saveProgress];
     [self gotoTransition];
 }
