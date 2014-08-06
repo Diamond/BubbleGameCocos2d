@@ -175,6 +175,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 {
     [super onEnter];
     [self setupExplosion];
+    [self loadProgress];
     [self loadStage];
 }
 
@@ -250,12 +251,40 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 -(void)transitionToNextStage
 {
     _level++;
+    _totalScore += _score;
+    [self saveProgress];
     [self loadStage];
 }
 
 -(void)redoStage
 {
     [self loadStage];
+}
+
+-(void)returnToTitle
+{
+    CCScene *gameplayScene = [CCBReader loadAsScene:@"TitleScreen"];
+    [[CCDirector sharedDirector] replaceScene:gameplayScene];
+}
+
+-(void)saveProgress
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setInteger:_level forKey:@"currentLevel"];
+    [defaults setInteger:_totalScore forKey:@"currentScore"];
+    [defaults synchronize];
+}
+
+-(void)loadProgress
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"resumeLevel"]) {
+        return;
+    }
+
+    _level      = [defaults integerForKey:@"currentLevel"];
+    _totalScore = [defaults integerForKey:@"currentScore"];
 }
 
 @end

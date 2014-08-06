@@ -11,6 +11,7 @@
 @interface TitleScreen : CCNode
 
 -(void)playNormal;
+-(void)continueNormal;
 -(void)playEndless;
 -(void)viewHighScores;
 

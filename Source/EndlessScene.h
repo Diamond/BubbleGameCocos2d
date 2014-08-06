@@ -10,4 +10,6 @@
 
 @interface EndlessScene : CCScene
 
+-(void)returnToTitle;
+
 @end

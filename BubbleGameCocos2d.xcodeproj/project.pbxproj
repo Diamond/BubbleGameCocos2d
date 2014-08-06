@@ -38,6 +38,14 @@
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		CA3B7AA4198F3F450011ABB0 /* TitleScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3B7AA3198F3F450011ABB0 /* TitleScreen.m */; };
 		CA96AB4219908C2900EDC232 /* EndlessScene.m in Sources */ = {isa = PBXBuildFile; fileRef = CA96AB4119908C2900EDC232 /* EndlessScene.m */; };
+		CA96AB4A199094EF00EDC232 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB49199094EF00EDC232 /* Images.xcassets */; };
+		CA96AB4E1990956700EDC232 /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB4B1990956700EDC232 /* icon-57.png */; };
+		CA96AB4F1990956700EDC232 /* icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB4C1990956700EDC232 /* icon-114.png */; };
+		CA96AB501990956700EDC232 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB4D1990956700EDC232 /* icon-120.png */; };
+		CA96AB521990971300EDC232 /* splashscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB511990971300EDC232 /* splashscreen@2x.png */; };
+		CA96AB56199099B500EDC232 /* icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB53199099B500EDC232 /* icon-57@2x.png */; };
+		CA96AB57199099B500EDC232 /* icon-114@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB54199099B500EDC232 /* icon-114@2x.png */; };
+		CA96AB58199099B500EDC232 /* icon-120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA96AB55199099B500EDC232 /* icon-120@2x.png */; };
 		CABB388C19889F6000B83F5C /* Bubble.m in Sources */ = {isa = PBXBuildFile; fileRef = CABB388B19889F6000B83F5C /* Bubble.m */; };
 		CAE032951989EF2600DEC8E4 /* Explosion.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE032941989EF2600DEC8E4 /* Explosion.m */; };
 /* End PBXBuildFile section */
@@ -83,7 +91,7 @@
 		B73789861807631A0076A88C /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = Source/Prefix.pch; sourceTree = SOURCE_ROOT; };
 		B7378992180767190076A88C /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Source/MainScene.h; sourceTree = "<group>"; };
 		B7378993180767190076A88C /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScene.m; path = Source/MainScene.m; sourceTree = "<group>"; };
-		B77F1B2E17B978D7009739AE /* BubbleGameCocos2d.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BubbleGameCocos2d.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B77F1B2E17B978D7009739AE /* Bubble Burst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bubble Burst.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77F1B3117B978D7009739AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B77F1B3317B978D7009739AE /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		B77F1B3517B978D7009739AE /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -98,6 +106,14 @@
 		CA3B7AA3198F3F450011ABB0 /* TitleScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TitleScreen.m; path = Source/TitleScreen.m; sourceTree = "<group>"; };
 		CA96AB4019908C2900EDC232 /* EndlessScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndlessScene.h; path = Source/EndlessScene.h; sourceTree = "<group>"; };
 		CA96AB4119908C2900EDC232 /* EndlessScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndlessScene.m; path = Source/EndlessScene.m; sourceTree = "<group>"; };
+		CA96AB49199094EF00EDC232 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BubbleGameCocos2d/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		CA96AB4B1990956700EDC232 /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
+		CA96AB4C1990956700EDC232 /* icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-114.png"; sourceTree = "<group>"; };
+		CA96AB4D1990956700EDC232 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
+		CA96AB511990971300EDC232 /* splashscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashscreen@2x.png"; sourceTree = "<group>"; };
+		CA96AB53199099B500EDC232 /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57@2x.png"; sourceTree = "<group>"; };
+		CA96AB54199099B500EDC232 /* icon-114@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-114@2x.png"; sourceTree = "<group>"; };
+		CA96AB55199099B500EDC232 /* icon-120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120@2x.png"; sourceTree = "<group>"; };
 		CABB388A19889F6000B83F5C /* Bubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bubble.h; path = Source/Bubble.h; sourceTree = "<group>"; };
 		CABB388B19889F6000B83F5C /* Bubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bubble.m; path = Source/Bubble.m; sourceTree = "<group>"; };
 		CAE032931989EF2600DEC8E4 /* Explosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Explosion.h; path = Source/Explosion.h; sourceTree = "<group>"; };
@@ -164,6 +180,13 @@
 		B73789911807667A0076A88C /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				CA96AB53199099B500EDC232 /* icon-57@2x.png */,
+				CA96AB54199099B500EDC232 /* icon-114@2x.png */,
+				CA96AB55199099B500EDC232 /* icon-120@2x.png */,
+				CA96AB511990971300EDC232 /* splashscreen@2x.png */,
+				CA96AB4B1990956700EDC232 /* icon-57.png */,
+				CA96AB4C1990956700EDC232 /* icon-114.png */,
+				CA96AB4D1990956700EDC232 /* icon-120.png */,
 				B71F5907188484E7003F4D28 /* iPad-old.png */,
 				B71F5908188484E7003F4D28 /* iPad-old@2x.png */,
 				B71F5909188484E7003F4D28 /* iPad.png */,
@@ -197,7 +220,7 @@
 		B77F1B2F17B978D7009739AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B77F1B2E17B978D7009739AE /* BubbleGameCocos2d.app */,
+				B77F1B2E17B978D7009739AE /* Bubble Burst.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,6 +246,7 @@
 		B77F1B4617B978D7009739AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA96AB49199094EF00EDC232 /* Images.xcassets */,
 				B73789911807667A0076A88C /* Icons */,
 				B737893A180761570076A88C /* Published-iOS */,
 			);
@@ -258,7 +282,7 @@
 			);
 			name = BubbleGameCocos2d;
 			productName = Example;
-			productReference = B77F1B2E17B978D7009739AE /* BubbleGameCocos2d.app */;
+			productReference = B77F1B2E17B978D7009739AE /* Bubble Burst.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -318,16 +342,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA96AB56199099B500EDC232 /* icon-57@2x.png in Resources */,
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
+				CA96AB4A199094EF00EDC232 /* Images.xcassets in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
+				CA96AB58199099B500EDC232 /* icon-120@2x.png in Resources */,
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
+				CA96AB501990956700EDC232 /* icon-120.png in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,
+				CA96AB57199099B500EDC232 /* icon-114@2x.png in Resources */,
+				CA96AB521990971300EDC232 /* splashscreen@2x.png in Resources */,
 				B71F5915188484E7003F4D28 /* iPhone-old.png in Resources */,
+				CA96AB4F1990956700EDC232 /* icon-114.png in Resources */,
+				CA96AB4E1990956700EDC232 /* icon-57.png in Resources */,
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
@@ -390,7 +422,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brandon Richey (32KGPTZU7J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brandon Richey (32KGPTZU7J)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -405,8 +438,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Bubble Burst";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -421,7 +455,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brandon Richey (32KGPTZU7J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brandon Richey (32KGPTZU7J)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -434,7 +469,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "Bubble Burst";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -444,9 +480,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brandon Richey (32KGPTZU7J)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -460,15 +498,16 @@
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_NAME = BubbleGameCocos2d;
+				PRODUCT_NAME = "Bubble Burst";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -477,6 +516,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -492,14 +533,15 @@
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
 				);
 				INFOPLIST_FILE = Source/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
 					"-ObjC",
 				);
-				PRODUCT_NAME = BubbleGameCocos2d;
+				PRODUCT_NAME = "Bubble Burst";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

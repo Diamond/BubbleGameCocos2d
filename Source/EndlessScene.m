@@ -148,4 +148,10 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
     return TRUE;
 }
 
+-(void)returnToTitle
+{
+    CCScene *gameplayScene = [CCBReader loadAsScene:@"TitleScreen"];
+    [[CCDirector sharedDirector] replaceScene:gameplayScene];
+}
+
 @end

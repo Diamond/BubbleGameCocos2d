@@ -71,8 +71,8 @@
     self.velocity              = CGPointZero;
     self.exploding             = TRUE;
     self.anchorPoint           = ccp(0.5, 0.5);
-    CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:1.7f scale:9.0f];
-    CCActionDelay    *delay    = [CCActionDelay actionWithDuration:0.7f];
+    CCActionScaleBy  *expand   = [CCActionScaleBy actionWithDuration:1.8f scale:11.0f];
+    CCActionDelay    *delay    = [CCActionDelay actionWithDuration:0.9f];
     CCActionScaleBy  *shrink   = [CCActionScaleBy actionWithDuration:0.7f scale:0.0f];
     CCActionCallBlock *betterRemove = [CCActionCallBlock actionWithBlock:^{
         self.dead = TRUE;
