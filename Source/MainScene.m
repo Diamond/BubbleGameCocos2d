@@ -44,7 +44,7 @@ static inline CGFloat randomInRange(CGFloat low, CGFloat high)
 }
 
 -(CGSize)screenSize {
-    return [[UIScreen mainScreen] bounds].size;
+    return [[CCDirector sharedDirector] viewSize];
 }
 
 -(id)init {

@@ -141,7 +141,8 @@
 }
 
 -(CGSize)screenSize {
-    return [[UIScreen mainScreen] bounds].size;
+    //return [[UIScreen mainScreen] bounds].size;
+    return [[CCDirector sharedDirector] viewSize];
 }
 
 @end

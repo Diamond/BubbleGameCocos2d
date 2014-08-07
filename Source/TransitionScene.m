@@ -68,7 +68,7 @@
     }
     [defaults synchronize];
     
-    TitleScreen *gameplayScene = (TitleScreen*)[CCBReader loadAsScene:@"TitleScreen"];
+    CCScene *gameplayScene = [CCBReader loadAsScene:@"TitleScreen"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }
 
