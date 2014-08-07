@@ -3,7 +3,7 @@
 //  BubbleGameCocos2d
 //
 //  Created by Brandon Richey on 7/30/14.
-//  Copyright (c) 2014 Apportable. All rights reserved.
+//  Copyright (c) 2014 Sagadev/Brandon Richey. All rights reserved.
 //
 
 #import "CCSprite.h"

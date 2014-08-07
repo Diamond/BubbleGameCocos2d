@@ -1,9 +1,9 @@
 //
 //  MainScene.m
-//  PROJECTNAME
+//  BubbleGameCocos2d
 //
-//  Created by Viktor on 10/10/13.
-//  Copyright (c) 2013 Apportable. All rights reserved.
+//  Created by Brandon Richey on 8/6/14.
+//  Copyright (c) 2013 Sagadev/Brandon Richey. All rights reserved.
 //
 
 #import "MainScene.h"

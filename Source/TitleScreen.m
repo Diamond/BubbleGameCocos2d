@@ -3,12 +3,13 @@
 //  BubbleGameCocos2d
 //
 //  Created by Brandon Richey on 8/4/14.
-//  Copyright (c) 2014 Apportable. All rights reserved.
+//  Copyright (c) 2014 Sagadev/Brandon Richey. All rights reserved.
 //
 
 #import "TitleScreen.h"
 #import "MainScene.h"
 #import "EndlessScene.h"
+#import "CreditsScene.h"
 
 @implementation TitleScreen {
     CCLabelTTF *_topScoreDisplay;
@@ -49,6 +50,12 @@
 -(void)playEndless
 {
     EndlessScene *gameplayScene = (EndlessScene*)[CCBReader loadAsScene:@"EndlessScene"];
+    [[CCDirector sharedDirector] replaceScene:gameplayScene];
+}
+
+-(void)showCredits
+{
+    CreditsScene *gameplayScene = (CreditsScene*)[CCBReader loadAsScene:@"CreditsScene"];
     [[CCDirector sharedDirector] replaceScene:gameplayScene];
 }
 

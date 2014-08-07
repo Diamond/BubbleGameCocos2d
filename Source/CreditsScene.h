@@ -1,5 +1,5 @@
 //
-//  MainScene.h
+//  Credits.h
 //  BubbleGameCocos2d
 //
 //  Created by Brandon Richey on 8/6/14.
@@ -8,8 +8,6 @@
 
 #import "CCScene.h"
 
-@interface MainScene : CCScene
-
--(void)returnToTitle;
+@interface CreditsScene : CCScene
 
 @end
